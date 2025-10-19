@@ -1,0 +1,11 @@
+[project]
+name = "chainup_sdk"
+version = "0.1.0"
+description = "A Python SDK for ChainUp services"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "cryptography>=46.0.3",
+    "dotenv>=0.9.9",
+    "requests>=2.32.5",
+]
