@@ -2,6 +2,7 @@ import base64
 import json
 import textwrap
 import time
+from datetime import datetime, timezone
 from typing import Any, Dict, Optional
 
 
@@ -18,6 +19,28 @@ def build_sign_content(payload: Dict[str, Any], timestamp: str) -> str:
 def generate_timestamp_ms() -> str:
     """Return the current epoch timestamp in milliseconds as a string."""
     return str(int(time.time() * 1000))
+
+
+def ensure_timestamp_ms(value: str) -> str:
+    """Coerce ``value`` into a millisecond timestamp string.
+
+    Accepts either an already well-formed millisecond timestamp or a
+    ``yyyy-MM-dd HH:mm:ss`` datetime string (interpreted as UTC).
+    """
+
+    stripped = value.strip()
+    if stripped.isdigit():
+        return stripped
+
+    try:
+        dt = datetime.strptime(stripped, "%Y-%m-%d %H:%M:%S")
+        dt = dt.replace(tzinfo=timezone.utc)
+    except ValueError as exc:  # pragma: no cover - defensive branch
+        raise ValueError(
+            "Timestamp must be milliseconds string or 'yyyy-MM-dd HH:mm:ss'."
+        ) from exc
+
+    return str(int(dt.timestamp() * 1000))
 
 
 def normalise_private_key(raw: str) -> str:
