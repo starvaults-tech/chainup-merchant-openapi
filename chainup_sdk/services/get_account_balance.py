@@ -20,5 +20,5 @@ def fetch(
         "pageNum": page_num,
     }
     if uid is not None:
-        payload["uid"] = uid
+        payload["uid"] = int(uid)
     return client.request(endpoints.ACCOUNT_BALANCE, payload)

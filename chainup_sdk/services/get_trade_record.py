@@ -59,5 +59,4 @@ def fetch(
         payload["contractId"] = contract_id
     if contract_name:
         payload["contractName"] = contract_name
-    print(payload)
     return client.request(endpoints.TRADE_RECORDS, payload)

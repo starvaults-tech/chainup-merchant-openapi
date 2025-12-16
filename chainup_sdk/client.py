@@ -41,6 +41,7 @@ class ChainupClient:
             headers=headers,
             timeout=self.timeout,
         )
+        # print(f"URL: {endpoint.method} {self.base_url}{endpoint.path}\nPayload: {payload}\nReturned Status: {response.status_code}\nBody {response.text}")
         response.raise_for_status()
         return response.json()
 

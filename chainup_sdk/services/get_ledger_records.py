@@ -22,5 +22,5 @@ def fetch(
         "limit": limit,
     }
     if uid:
-        payload["uid"] = uid
+        payload["uid"] = int(uid)
     return client.request(endpoints.LEDGER_RECORDS, payload)
