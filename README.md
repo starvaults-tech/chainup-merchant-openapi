@@ -7,3 +7,21 @@
 </p>
 
 # ChainUp Merchant Level OpenAPI
+
+## Installation
+
+- uv:
+    ```bash
+    $ uv add "git+https://github.com/starvaults-tech/chainup-merchant-openapi"
+    ```
+    or
+    ```bash
+    $ uv pip install "git+https://github.com/starvaults-tech/chainup-merchant-openapi"
+    ```
+- pip:
+    ```bash
+    $ pip install "git+https://github.com/starvaults-tech/chainup-merchant-openapi"
+    ```
+
+
+
